@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home','HomeController@index')->name('home');
+Route::group(['prefix'=> 'backend','middleware' => ['auth','role:superadmin']],function(){
+    Route::get('/',function(){
+        return 'hallo';
+    });
+    Route::resource('user','UserController');
+});

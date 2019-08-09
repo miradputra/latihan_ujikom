@@ -13,5 +13,5 @@ class Guru extends Model
     public function nilai()
     {
         return $this->hasMany('App\Nilai', 'guru_id');
-}
+    }
 }

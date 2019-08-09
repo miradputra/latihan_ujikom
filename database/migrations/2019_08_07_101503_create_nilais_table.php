@@ -22,7 +22,7 @@ class CreateNilaisTable extends Migration
             $table->text('nilai_huruf');
             $table->foreign('siswa_id')->references('id')->on('siswas');
             $table->foreign('guru_id')->references('id')->on('gurus');
-            $table->foreign('sk_id')->references('id')->on('standar_kompetensi');
+            $table->foreign('sk_id')->references('id')->on('standar_kompetensis');
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class CreateStandarKompetensisTable extends Migration
             $table->unsignedBigInteger('kompetensi_id');
             $table->string('nama');
             $table->text('kelas');
-            $table->foreign('kompetensi_id')->references('id')->on('kompetensi_keahlians');
+            $table->foreign('kompetensi_id')->references('id')->on('kompetensi_keahlian');
             $table->timestamps();
         });
     }

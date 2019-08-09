@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKopentensiKeahlian extends Migration
+class CreateKompetensiKeahlian extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateKopentensiKeahlian extends Migration
      */
     public function up()
     {
-        Schema::create('kopentensi_keahlian', function (Blueprint $table) {
+        Schema::create('kompetensi_keahlian', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('kode')->unique();
             $table->unsignedBigInteger('bidang_id');
@@ -31,6 +31,6 @@ class CreateKopentensiKeahlian extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kopentensi_keahlian');
+        Schema::dropIfExists('kompentensi_keahlian');
     }
 }
