@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Hash;
 
-class UserController extends Controller
+class WaliController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        
-        $user = User::all();
-        $response = [
-            'succses' => true,
-            'data' => $user,
-            'message' => 'berhasil'
-        ];
-        return response()->json($response, 404);
+        //
     }
 
     /**
@@ -42,17 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //untuk login 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user-> save();
-
-        $role = Role::where('name','superadmin')->first();
-        $user->attachRole($role);
-
-        return response()->json('berhasil');
+        //
     }
 
     /**
@@ -63,7 +45,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        //
     }
 
     /**
@@ -74,7 +56,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -86,12 +68,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = new User();
-        $user->name = $request->name();
-        $user->email = $request->email();
-        $user->password = Hash::make($request->password);
-        $user->save();
-
+        //
     }
 
     /**
@@ -102,11 +79,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFile($id)->delete();
-        $response = [
-            'succes' =>true,
-            'data' =>$user,
-            'message' => 'data berhasil di hapus'
-        ];
+        //
     }
 }

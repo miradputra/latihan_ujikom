@@ -19,5 +19,5 @@ Route::group(['prefix'=> 'backend','middleware' => ['auth','role:superadmin']],f
     Route::get('/',function(){
         return 'hallo';
     });
-    Route::resource('user','UserController');
+    Route::resource('user','UserController@index');
 });
