@@ -14,7 +14,7 @@ class BstudiController extends Controller
      */
     public function index()
     {
-        //
+    
     }
 
     /**

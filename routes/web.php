@@ -14,10 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/home','HomeController@index')->name('home');
+
 Route::group(['prefix'=> 'backend','middleware' => ['auth','role:superadmin']],function(){
     Route::get('/',function(){
-        return 'hallo';
+        return 'hallo admin';
     });
-    Route::resource('user','UserController@index');
+    Route::resource('user','UserController');
 });
+Auth::routes();
+
+Route::get('/member',function(){
+    return 'hallo member';
+});
+Route::resource('user','UserController');
+Route::resource('bidangStudi','BstudiController');

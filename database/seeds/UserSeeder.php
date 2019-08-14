@@ -24,5 +24,6 @@ class UserSeeder extends Seeder
         $admin->password = bcrypt('rahasia');
         $admin->save();
         $admin->attachRole($adminRole);
+        //membuat rolen member
     }
 }
