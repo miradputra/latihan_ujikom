@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BidangStudi;
+use Session;
+use Auth;
 
 class BstudiController extends Controller
 {
@@ -14,7 +16,8 @@ class BstudiController extends Controller
      */
     public function index()
     {
-    
+        $bidangstudi = BidangStudi::all();
+        return view('backend.bidangStudi.index',compact('bidangstudi'));
     }
 
     /**
@@ -24,7 +27,8 @@ class BstudiController extends Controller
      */
     public function create()
     {
-        //
+        $bidangstudi = bidangstudi::all();
+        return view('backend.bidangStudi.create',compact('bidangstudi'));
     }
 
     /**
@@ -35,7 +39,11 @@ class BstudiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bidangstudi = new bidangstudi();
+        $bidangstudi->kode = $request->kode;
+        $bidangstudi->nama = $request->nama;
+        $bidangstudi->save();
+        return redirect()->route('backend.bidangStudi.index');
     }
 
     /**
@@ -46,7 +54,7 @@ class BstudiController extends Controller
      */
     public function show($id)
     {
-        //
+    //
     }
 
     /**
@@ -57,7 +65,8 @@ class BstudiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bidangstudi = bidangstudi::findOrfail($id);
+        return view('backend.bidangStudi.edit',compact('bidangstudi'));
     }
 
     /**
@@ -69,7 +78,16 @@ class BstudiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bidangstudi = bidangstudi::findOrfail($id);
+        $bidangstudi->kode = $request->kode;
+        $bidangstudi->nama = $request->nama;
+        $bidangstudi->save();
+        Session::flash("flash_notification",[
+            "level" => "success",
+            "message" => "Berhasil menyimpan<b>"
+                         . $bidangstudi->nama."</b>"
+        ]);
+        return redirect()->route('backend.bidangStudi.index');
     }
 
     /**
@@ -80,6 +98,13 @@ class BstudiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bidangstudi = bidangstudi::findOrfail($id);
+        $bidangstudi->delete();
+        Session::flash("flash_notification",[
+            "level" => "Success",
+            "message" => "Berhasil menghapus<b>"
+                         . $bidangstudi->nama."</b>"
+        ]);
+        return redirect()->route('backend.bidangStudi.index');
     }
 }

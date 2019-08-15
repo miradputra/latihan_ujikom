@@ -14,7 +14,8 @@ class UserSeeder extends Seeder
     {
         //membuat role admin
         $adminRole = new Role();
-        $adminRole->name= "admin";
+        $adminRole->name= "superadmin";
+        $adminRole->display_name = "admin";
         $adminRole->save();
 
         //membuat sample admin
